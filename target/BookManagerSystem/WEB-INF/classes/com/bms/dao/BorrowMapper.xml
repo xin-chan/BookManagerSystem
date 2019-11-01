@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bms.dao.BorrowMapper">
+  <resultMap id="BaseResultMap" type="com.bms.dto.Borrow">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="borrowTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="limitLength" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="returnTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="remainLength" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="actualTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="bookId" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="userId" javaType="java.lang.Long" jdbcType="BIGINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, borrowTime, limitLength, returnTime, remainLength, actualTime, bookId, userId
+  </sql>
+  <select id="selectByExample" parameterType="com.bms.dto.BorrowExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bms_borrow
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bms_borrow
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from bms_borrow
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bms.dto.BorrowExample">
+    delete from bms_borrow
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bms.dto.Borrow">
+    insert into bms_borrow (id, borrowTime, limitLength, 
+      returnTime, remainLength, actualTime, 
+      bookId, userId)
+    values (#{id,jdbcType=BIGINT}, #{borrowTime,jdbcType=TIMESTAMP}, #{limitLength,jdbcType=BIGINT}, 
+      #{returnTime,jdbcType=TIMESTAMP}, #{remainLength,jdbcType=BIGINT}, #{actualTime,jdbcType=TIMESTAMP}, 
+      #{bookId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bms.dto.Borrow">
+    insert into bms_borrow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="borrowTime != null">
+        borrowTime,
+      </if>
+      <if test="limitLength != null">
+        limitLength,
+      </if>
+      <if test="returnTime != null">
+        returnTime,
+      </if>
+      <if test="remainLength != null">
+        remainLength,
+      </if>
+      <if test="actualTime != null">
+        actualTime,
+      </if>
+      <if test="bookId != null">
+        bookId,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="borrowTime != null">
+        #{borrowTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="limitLength != null">
+        #{limitLength,jdbcType=BIGINT},
+      </if>
+      <if test="returnTime != null">
+        #{returnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remainLength != null">
+        #{remainLength,jdbcType=BIGINT},
+      </if>
+      <if test="actualTime != null">
+        #{actualTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bms.dto.BorrowExample" resultType="java.lang.Long">
+    select count(*) from bms_borrow
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update bms_borrow
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.borrowTime != null">
+        borrowTime = #{record.borrowTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.limitLength != null">
+        limitLength = #{record.limitLength,jdbcType=BIGINT},
+      </if>
+      <if test="record.returnTime != null">
+        returnTime = #{record.returnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remainLength != null">
+        remainLength = #{record.remainLength,jdbcType=BIGINT},
+      </if>
+      <if test="record.actualTime != null">
+        actualTime = #{record.actualTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bookId != null">
+        bookId = #{record.bookId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null">
+        userId = #{record.userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update bms_borrow
+    set id = #{record.id,jdbcType=BIGINT},
+      borrowTime = #{record.borrowTime,jdbcType=TIMESTAMP},
+      limitLength = #{record.limitLength,jdbcType=BIGINT},
+      returnTime = #{record.returnTime,jdbcType=TIMESTAMP},
+      remainLength = #{record.remainLength,jdbcType=BIGINT},
+      actualTime = #{record.actualTime,jdbcType=TIMESTAMP},
+      bookId = #{record.bookId,jdbcType=BIGINT},
+      userId = #{record.userId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bms.dto.Borrow">
+    update bms_borrow
+    <set>
+      <if test="borrowTime != null">
+        borrowTime = #{borrowTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="limitLength != null">
+        limitLength = #{limitLength,jdbcType=BIGINT},
+      </if>
+      <if test="returnTime != null">
+        returnTime = #{returnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remainLength != null">
+        remainLength = #{remainLength,jdbcType=BIGINT},
+      </if>
+      <if test="actualTime != null">
+        actualTime = #{actualTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bookId != null">
+        bookId = #{bookId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bms.dto.Borrow">
+    update bms_borrow
+    set borrowTime = #{borrowTime,jdbcType=TIMESTAMP},
+      limitLength = #{limitLength,jdbcType=BIGINT},
+      returnTime = #{returnTime,jdbcType=TIMESTAMP},
+      remainLength = #{remainLength,jdbcType=BIGINT},
+      actualTime = #{actualTime,jdbcType=TIMESTAMP},
+      bookId = #{bookId,jdbcType=BIGINT},
+      userId = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!--借阅列表-->
+  <select id="findBorrowList" resultType="com.bms.vo.BorrowVo">
+        SELECT v.id,b.bookCode,b.bookName,b.author,v.borrowTime,v.returnTime,v.bookId FROM
+        bms_books b JOIN bms_borrow v
+        ON b.id=v.bookId WHERE v.userId=#{id}
+  </select>
+
+  <!--添加借阅书籍-->
+  <insert id="addBorrow">
+    INSERT INTO bms_borrow(borrowTime,limitLength,returnTime,bookId,userId)
+    VALUES (#{borrowTime},#{limitLength},#{returnTime},#{bookId},#{userId})
+  </insert>
+
+  <!--删除借阅书籍-->
+  <delete id="deleteBorrow" parameterType="Long">
+    DELETE FROM bms_borrow WHERE id=#{id}
+  </delete>
+
+  <!--获取当前借阅人的借阅数量-->
+  <select id="borrowCount" parameterType="Long" resultType="Integer">
+        SELECT COUNT(id) FROM bms_borrow WHERE userId=#{userId}
+  </select>
+</mapper>

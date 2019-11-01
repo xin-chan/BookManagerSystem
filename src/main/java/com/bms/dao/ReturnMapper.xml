@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bms.dao.ReturnMapper">
+    <insert id="addReturn">
+        INSERT INTO bms_return(bookCode,bookName,borrowTime,actualTime,overStatus,userId) VALUES
+        (#{bookCode},#{bookName},#{borrowTime},#{actualTime},#{overStatus},#{userId})
+    </insert>
+
+<!--    一对多关系（一个用户对应多本书）-->
+    <resultMap id="returnMap" type="com.bms.vo.ReturnVo">
+        <result property="userName" column="userName"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="gender" column="gender"></result>
+        <result property="phone" column="phone"></result>
+        <collection property="returns" ofType="com.bms.dto.Return">
+            <id property="id" column="id"></id>
+            <result property="bookCode" column="bookCode"></result>
+            <result property="bookName" column="bookName"></result>
+            <result property="borrowTime" column="borrowTime"></result>
+            <result property="actualTime" column="actualTime"></result>
+            <result property="overStatus" column="overStatus"></result>
+        </collection>
+    </resultMap>
+    <select id="findReturnList" parameterType="Long" resultMap="returnMap">
+        SELECT r.id id,r.bookCode bookCode,r.bookName bookName,r.borrowTime borrowTime,r.actualTime actualTime,
+             r.overStatus overStatus,u.userName userName,u.birthday birthday,u.gender gender,u.phone phone
+        FROM bms_return r
+        JOIN bms_users u
+        ON r.userId=u.id
+        WHERE u.id=#{userId}
+  </select>
+</mapper>

@@ -1,0 +1,65 @@
+html{height:100%;}
+body{font:14px/1.5 '微软雅黑';word-wrap:break-word;word-break:break-all;-webkit-text-size-adjust:none;background:#fff;color:#333;}
+td{text-align: center;}
+input,select,textarea{font-size:14px;color:#333}
+input{vertical-align:middle;padding:2px;margin:0}
+table{border-collapse:collapse;border-spacing:0}
+select,input,button{font:14px/20px Verdana,Simsun,Helvetica,Arial,sans-serif;}
+a{color:#428bca;text-decoration:none;outline:0}
+a:hover,a:active{color:#2a6496;text-decoration:none;}
+a:focus{outline:0;}
+h1{font-size:100%}
+ul{list-style:none outside;padding:0}
+button::-moz-focus-inner{border:0;padding:0;}
+.btn2 {width: 70px;height: 35px;padding: 8px;background-color: #428bca;border-color: #357ebd;color: #fff;border-radius: 10px;text-align: center;vertical-align: middle;
+    border: 0.5px solid transparent;font-weight: normal;font-size: medium}
+.return-return{width: 60px;height: 35px;padding: 8px;background-color: #dc3545;border-color: #a71d2a;color: #fff;border-radius: 10px;text-align: center;
+    vertical-align: middle;border: 0.5px solid transparent;font-weight: normal;font-size: medium}
+.topbar-wrap{height:50px;line-height:50px;background:#1A1A1A;}
+.topbar-logo-wrap{float:left;}
+.topbar-inner{font-size:18px;padding:0 20px;}
+.topbar-logo{float:left;width:150px;text-align:center;}
+.navbar-list{float:left;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{*height:1%;}
+.none{display:none}
+.white,.white a:link,.white a:visited{color:#fff;}
+.white a:hover{color:#ff0;}
+.top-info-wrap{float:right;}
+.top-info-list li{float:left;}
+.top-info-list li a{float:left;margin-left:5px;padding:0 20px;display:inline;zoom:1;}
+.top-info-list li a:hover{background:#343434;}
+.sidebar-wrap{float:left;width: 180px;min-height:700px;background: #f2f2f2;border-right:1px solid #ccc;cursor:e-resize;}
+.sidebar-title{height: 40px;line-height: 40px;text-indent:2em;font-size: 30px;text-align: left;}
+.sidebar-title h1{font-weight: normal;}
+.sidebar-content{padding-top: 5px;}
+.sidebar-list li{border:1px solid #e5e5e5;border-width:1px 0;}
+.sidebar-list li .icon-font{margin-right: 5px;color: #888;font-size: 14px;}
+.sidebar-list li a{padding: 0 16px 0 20px;display: block;height: 38px;line-height: 38px;color: #333;}
+.sidebar-list li a:hover{background: #fff;color: #1963AA;}
+.main-wrap{margin-left: 180px;min-height:100%;}
+.crumb-wrap{height: 40px;line-height: 39px;border-bottom: 1px solid #e5e5e5;background: #f5f5f5;}
+.crumb-list{padding-left: 12px;}
+.crumb-list .icon-font{margin-right: 5px;}
+@font-face{font-family:'icomoon';src:url('../images/fonts/icomoon.eot');src:url('../images/fonts/icomoon.eot?#iefix')
+format('embedded-opentype'),url('../images/fonts/icomoon.woff') format('woff'),url('../images/fonts/icomoon.ttf')
+format('truetype'),url('../images/fonts/icomoon.svg#icomoon') format('svg');font-weight:normal;font-style:normal;}
+.icon-font { font-family:'icomoon'; speak:none; font-weight:400;
+    font-style:normal; font-variant:normal; text-transform:none; line-height:1; -webkit-font-smoothing:antialiased; }
+.crumb-step{margin: 0 5px;color: #b2c2e0;font-family: serif;}
+.search-wrap{padding: 15px 0;border-bottom: 1px solid #e5e5e5;}
+.search-tab tr{line-height: 35px;}
+.search-tab th{text-align: right;padding-right:10px;font-weight: normal;}
+.search-tab td{padding: 0 5px;}
+.result-tab{border-collapse:collapse;border: 1px;text-align: center}
+.result-tab th{font-weight: normal;font-size: 15px;text-align: center;background:#fff3cd 0 bottom repeat-x;}
+.result-tab th,.result-tab td{padding:5px;border-bottom: 1px solid #ddd;border-right: 1px solid #fff;}
+.result-tab tr{line-height:35px;}
+.result-tab th.tc,.result-tab td.tc{text-align: center;}
+.result-tab tr:nth-child(odd){background: #f9f9f9;}
+.result-tab tr:hover{background: #f1f1f1;}
+.result-tab tr.even-tr{background: #e9fff2;}
+.list-page{padding:20px 0;text-align:center;}
+.list-page a{margin:0 5px;padding:2px 7px;border:1px solid #ccc;background:#f3f3f3;}
+.list-page a:hover{background:#e4e4e4;border:1px solid #908f8f;}
+.list-page .current{margin:0 5px;padding:2px 7px;background:#f60;border:1px solid #fe8101;color:#fff;}
